@@ -38,10 +38,6 @@ contract VigilanteCore {
         string[] statement;
     }
 
-    struct FIR_evidence {
-        string[] evidence;
-    }
-
     enum Status {
         Registered,
         Caught,
@@ -56,7 +52,7 @@ contract VigilanteCore {
         FIR_complainant complainant;
         FIR_suspect suspects;
         FIR_witness witnesses;
-        FIR_evidence evidences;
+        string evidences;
         Status status;
     }
 
@@ -72,13 +68,8 @@ contract VigilanteCore {
         FIR_complainant calldata complainant,
         FIR_suspect calldata suspects,
         FIR_witness calldata witnesses,
-        FIR_evidence calldata evidences
-    )
-        external
-        OfficialOnly
-        PreventDOS(suspects, witnesses, evidences)
-        returns (bool)
-    {
+        string calldata evidences
+    ) external OfficialOnly PreventDOS(suspects, witnesses) returns (bool) {
         require(
             allFIRs[caseID].caseID == 0,
             "Error: Case ID already registered"
@@ -96,6 +87,7 @@ contract VigilanteCore {
         });
 
         allFIRs[caseID] = fir;
+        approvals[caseID][official] = true;
         return true;
     }
 
@@ -111,7 +103,7 @@ contract VigilanteCore {
 
     function getFIRData(
         uint256 caseID
-    ) external view OfficialOnly ViewerOnly(caseID) returns (FIR memory fir) {
+    ) external view ViewerOnly(caseID) returns (FIR memory fir) {
         require(allFIRs[caseID].caseID != 0, "Error: Case ID not registered");
         fir = allFIRs[caseID];
     }
@@ -146,8 +138,7 @@ contract VigilanteCore {
 
     modifier PreventDOS(
         FIR_suspect calldata suspects,
-        FIR_witness calldata witnesses,
-        FIR_evidence calldata evidences
+        FIR_witness calldata witnesses
     ) {
         require(
             suspects.name.length <= 5,
@@ -161,10 +152,6 @@ contract VigilanteCore {
             witnesses.name.length == witnesses.contact.length &&
                 witnesses.name.length == witnesses.statement.length,
             "Error: Witness name, contact and statements should be equal"
-        );
-        require(
-            evidences.evidence.length <= 5,
-            "Note: You can add maximum 5 evidences"
         );
         _;
     }
