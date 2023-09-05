@@ -1,0 +1,37 @@
+{
+    "case_number":"12345",
+    "reporting_officer":{
+       "name":"John Smith",
+       "badge_number":"789",
+       "department":"City Police Department"
+    },
+    "incident":{
+       "date":"2023-09-03",
+       "time":"15:30:00",
+       "location":"123 Main Street",
+       "description":"Burglary reported by the homeowner."
+    },
+    "complainant":{
+       "name":"Alice Johnson",
+       "contact":"555-123-4567",
+       "address":"456 Elm Street"
+    },
+    "suspect":{
+       "name":"Unknown",
+       "description":"Male, medium build, wearing dark clothing.",
+       "last_seen_location":"Near the scene of the incident."
+    },
+    "witnesses":[
+       {
+          "name":"Bob Williams",
+          "contact":"555-987-6543",
+          "statement":"I saw a person matching the suspect's description leaving the scene."
+       }
+    ],
+    "evidence":[
+       "Photographs of the crime scene",
+       "Fingerprint samples"
+    ],
+    "status":"Under investigation",
+    "comments":"The forensic team is currently analyzing the evidence."
+ }
