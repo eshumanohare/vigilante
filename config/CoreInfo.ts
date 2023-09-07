@@ -1,0 +1,386 @@
+const CoreABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_departmentID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_official",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "caseID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "viewer",
+				"type": "address"
+			}
+		],
+		"name": "approveView",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "departmentID",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "caseID",
+				"type": "uint256"
+			}
+		],
+		"name": "getFIRData",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "caseID",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "badgeID",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "departmentID",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct VigilanteCore.FIR_reportingOfficer",
+						"name": "officer",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "date",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "time",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "location",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							}
+						],
+						"internalType": "struct VigilanteCore.FIR_incident",
+						"name": "incident",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "contact",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "residentialAddress",
+								"type": "string"
+							}
+						],
+						"internalType": "struct VigilanteCore.FIR_complainant",
+						"name": "complainant",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string[]",
+								"name": "name",
+								"type": "string[]"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "lastSeenLocation",
+								"type": "string"
+							}
+						],
+						"internalType": "struct VigilanteCore.FIR_suspect",
+						"name": "suspects",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string[]",
+								"name": "name",
+								"type": "string[]"
+							},
+							{
+								"internalType": "string[]",
+								"name": "contact",
+								"type": "string[]"
+							},
+							{
+								"internalType": "string[]",
+								"name": "statement",
+								"type": "string[]"
+							}
+						],
+						"internalType": "struct VigilanteCore.FIR_witness",
+						"name": "witnesses",
+						"type": "tuple"
+					},
+					{
+						"internalType": "string",
+						"name": "evidences",
+						"type": "string"
+					},
+					{
+						"internalType": "enum VigilanteCore.Status",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"internalType": "struct VigilanteCore.FIR",
+				"name": "fir",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "official",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "caseID",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "badgeID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "departmentID",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct VigilanteCore.FIR_reportingOfficer",
+				"name": "officer",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "date",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "location",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					}
+				],
+				"internalType": "struct VigilanteCore.FIR_incident",
+				"name": "incident",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "contact",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "residentialAddress",
+						"type": "string"
+					}
+				],
+				"internalType": "struct VigilanteCore.FIR_complainant",
+				"name": "complainant",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string[]",
+						"name": "name",
+						"type": "string[]"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "lastSeenLocation",
+						"type": "string"
+					}
+				],
+				"internalType": "struct VigilanteCore.FIR_suspect",
+				"name": "suspects",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"internalType": "string[]",
+						"name": "name",
+						"type": "string[]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "contact",
+						"type": "string[]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "statement",
+						"type": "string[]"
+					}
+				],
+				"internalType": "struct VigilanteCore.FIR_witness",
+				"name": "witnesses",
+				"type": "tuple"
+			},
+			{
+				"internalType": "string",
+				"name": "evidences",
+				"type": "string"
+			}
+		],
+		"name": "registerFIR",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "caseID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "enum VigilanteCore.Status",
+				"name": "_status",
+				"type": "uint8"
+			}
+		],
+		"name": "updateStatus",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+];
+
+export const CoreConfig = {
+	abi:CoreABI
+}
