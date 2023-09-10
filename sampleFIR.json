@@ -1,37 +1,222 @@
 {
-    "case_number":"12345",
-    "reporting_officer":{
-       "name":"John Smith",
-       "badge_number":"789",
-       "department":"City Police Department"
+  "1": [
+    {
+      "caseID": "1",
+      "officer": {
+        "name": "John Smith",
+        "badgeID": "101",
+        "departmentID": "1"
+      },
+      "incident": {
+        "date": "1662071400",
+        "time": "1331311354",
+        "location": "123 Main St",
+        "description": "Burglary reported by the homeowner."
+      },
+      "complainant": {
+        "name": "Alice Johnson",
+        "contact": "555-123-4567",
+        "residentialAddress": "456 Elm St"
+      },
+      "suspects": {
+        "name": ["Mike Brown", "Sarah Davis"],
+        "description": "Two suspects involved in the burglary.",
+        "lastSeenLocation": "Near the scene of the incident."
+      },
+      "witnesses": {
+        "name": ["Bob Williams", "Emily White"],
+        "contact": ["555-987-6543", "555-111-2222"],
+        "statement": [
+          "I saw the suspects running away.",
+          "I heard glass breaking."
+        ]
+      },
+      "evidences": ["Photographs of the crime scene", "Fingerprint samples"]
     },
-    "incident":{
-       "date":"2023-09-03",
-       "time":"15:30:00",
-       "location":"123 Main Street",
-       "description":"Burglary reported by the homeowner."
+    {
+      "caseID": 2,
+      "officer": {
+        "name": "Jane Davis",
+        "badgeID": 102,
+        "departmentID": 1
+      },
+      "incident": {
+        "date": 1662158100,
+        "time": 1331311354,
+        "location": "789 Oak St",
+        "description": "Assault reported at a local bar."
+      },
+      "complainant": {
+        "name": "Robert Smith",
+        "contact": "555-222-3333",
+        "residentialAddress": "789 Maple Ave"
+      },
+      "suspects": {
+        "name": ["Susan Miller"],
+        "description": "Single suspect involved in the assault.",
+        "lastSeenLocation": "Fled the scene."
+      },
+      "witnesses": {
+        "name": ["Jennifer Brown"],
+        "contact": ["555-444-5555"],
+        "statement": ["I saw the suspect attacking the victim."]
+      },
+      "evidences": ["Security camera footage", "Medical reports"]
+    }
+  ],
+  "2": [
+    {
+      "caseID": 1,
+      "officer": {
+        "name": "Michael Johnson",
+        "badgeID": 103,
+        "departmentID": 2
+      },
+      "incident": {
+        "name": ["Vandalizer A"],
+        "description": "Person responsible for vandalism.",
+        "lastSeenLocation": "Near the vandalized area."
+      },
+      "witnesses": {
+        "name": ["Grace Parker"],
+        "contact": ["555-333-4444"],
+        "statement": ["I saw the person damaging the park equipment."]
+      },
+      "evidences": ["Park security footage", "Witness statements"]
     },
-    "complainant":{
-       "name":"Alice Johnson",
-       "contact":"555-123-4567",
-       "address":"456 Elm Street"
+    {
+      "caseID": 2,
+      "officer": {
+        "name": "Robert Davis",
+        "badgeID": 202,
+        "departmentID": 3
+      },
+      "incident": {
+        "date": 1662493800,
+        "time": 1331311354,
+        "location": "444 Maple Ave",
+        "description": "Bike theft reported near a school."
+      },
+      "complainant": {
+        "name": "Sophia Anderson",
+        "contact": "555-444-5555",
+        "residentialAddress": "444 Maple Ave"
+      },
+      "suspects": {
+        "name": ["Bike Thief X"],
+        "description": "Person suspected of bike theft.",
+        "lastSeenLocation": "Near the school."
+      },
+      "witnesses": {
+        "name": ["Olivia Thomas"],
+        "contact": ["555-777-8888"],
+        "statement": ["I saw the person taking the bike."]
+      },
+      "evidences": ["Security camera footage", "Witness statements"]
+    }
+  ],
+  "4": [
+    {
+      "caseID": 1,
+      "officer": {
+        "name": "Samuel Brown",
+        "badgeID": 301,
+        "departmentID": 4
+      },
+      "incident": {
+        "date": 1662580200,
+        "time": 1331311354,
+        "location": "666 Comedy St",
+        "description": "Report of a rogue stand-up comedian causing uncontrollable laughter in public."
+      },
+      "complainant": {
+        "name": "Chuck Johnson",
+        "contact": "555-666-7777",
+        "residentialAddress": "123 Comedy Ave"
+      },
+      "suspects": {
+        "name": ["Laughing Larry"],
+        "description": "Comedian causing the hilarity epidemic.",
+        "lastSeenLocation": "At the scene, cracking jokes."
+      },
+      "witnesses": {
+        "name": ["Sally Chuckles", "Billy Giggles"],
+        "contact": ["555-888-9999", "555-000-1111"],
+        "statement": [
+          "I couldn't stop laughing!",
+          "My sides hurt from laughing so hard."
+        ]
+      },
+      "evidences": [
+        "Video footage of uncontrollable laughter",
+        "Giggle-inducing props"
+      ]
     },
-    "suspect":{
-       "name":"Unknown",
-       "description":"Male, medium build, wearing dark clothing.",
-       "last_seen_location":"Near the scene of the incident."
-    },
-    "witnesses":[
-       {
-          "name":"Bob Williams",
-          "contact":"555-987-6543",
-          "statement":"I saw a person matching the suspect's description leaving the scene."
-       }
-    ],
-    "evidence":[
-       "Photographs of the crime scene",
-       "Fingerprint samples"
-    ],
-    "status":"Under investigation",
-    "comments":"The forensic team is currently analyzing the evidence."
- }
+    {
+      "caseID": 2,
+      "officer": {
+        "name": "Jessica Haha",
+        "badgeID": 302,
+        "departmentID": 4
+      },
+      "incident": {
+        "date": 1662666600,
+        "time": 1331311354,
+        "location": "777 Joke Ln",
+        "description": "Prank calls to the police station, claiming that donuts have taken over the city."
+      },
+      "complainant": {
+        "name": "April Pranks",
+        "contact": "555-123-9876",
+        "residentialAddress": "999 Gag Rd"
+      },
+      "suspects": {
+        "name": ["Prankster Pete"],
+        "description": "Master of comedic chaos.",
+        "lastSeenLocation": "At the local comedy club, planning more pranks."
+      },
+      "witnesses": {
+        "name": ["Chuck Chuckles"],
+        "contact": ["555-444-5555"],
+        "statement": ["I heard laughter in the background during the call."]
+      },
+      "evidences": ["Recordings of prank calls", "Silly string and confetti"]
+    }
+  ],
+
+  "5": [
+    {
+      "caseID": 1,
+      "officer": {
+        "name": "Officer Chuckle",
+        "badgeID": 401,
+        "departmentID": 5
+      },
+      "incident": {
+        "date": 1662753000,
+        "time": 1331311354,
+        "location": "123 Laughter Lane",
+        "description": "Report of a mischievous clown playfully slapping a pie in the face of a kid's ice cream cone."
+      },
+      "complainant": {
+        "name": "Joyful Joey",
+        "contact": "555-123-4567",
+        "residentialAddress": "456 Smiles Street"
+      },
+      "suspects": {
+        "name": ["Silly Sid the Clown"],
+        "description": "Professional pie-throwing entertainer.",
+        "lastSeenLocation": "At the local circus, preparing for more pranks."
+      },
+      "witnesses": {
+        "name": ["Giggling Grace"],
+        "contact": ["555-888-9999"],
+        "statement": ["I couldn't stop laughing at the hilarious pie slap!"]
+      },
+      "evidences": [
+        "Video of the comical pie slap",
+        "Giant foam finger as evidence"
+      ]
+    }
+  ]
+}

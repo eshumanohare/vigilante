@@ -13,11 +13,11 @@ contract VigilanteFactory {
         address indexed creator
     );
 
-    constructor() public {
+    constructor() {
         creator = msg.sender;
     }
 
-    function creatorCore(
+    function createCore(
         uint256 departmentID,
         address official
     ) external CreatorOnly returns (address core) {

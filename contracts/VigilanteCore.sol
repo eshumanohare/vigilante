@@ -27,20 +27,19 @@ contract VigilanteCore {
     }
 
     struct FIR_suspect {
-        string name;
+        string[] name;
         string description;
         string lastSeenLocation;
     }
 
     struct FIR_witness {
-        string name;
-        string contact;
-        string statement;
+        string[] name;
+        string[] contact;
+        string[] statement;
     }
 
     enum Status {
         Registered,
-        UnderInvestigation,
         Caught,
         Solved,
         Closed
@@ -51,13 +50,13 @@ contract VigilanteCore {
         FIR_reportingOfficer officer;
         FIR_incident incident;
         FIR_complainant complainant;
-        FIR_suspect[] suspects;
-        FIR_witness[] witnesses;
-        string[] evidences;
+        FIR_suspect suspects;
+        FIR_witness witnesses;
+        string evidences;
         Status status;
     }
 
-    constructor(uint256 _departmentID, address _official) public {
+    constructor(uint256 _departmentID, address _official) {
         departmentID = _departmentID;
         official = _official;
     }
@@ -67,25 +66,28 @@ contract VigilanteCore {
         FIR_reportingOfficer calldata officer,
         FIR_incident calldata incident,
         FIR_complainant calldata complainant,
-        FIR_suspect[] calldata suspects,
-        FIR_witness[] calldata witnesses,
-        string[] calldata evidences
-    ) external OfficialOnly returns (bool) {
+        FIR_suspect calldata suspects,
+        FIR_witness calldata witnesses,
+        string calldata evidences
+    ) external OfficialOnly PreventDOS(suspects, witnesses) returns (bool) {
         require(
             allFIRs[caseID].caseID == 0,
             "Error: Case ID already registered"
         );
-        FIR memory fir = FIR(
-            caseID,
-            officer,
-            incident,
-            complainant,
-            suspects,
-            witnesses,
-            evidences,
-            Status.Registered
-        );
+
+        FIR memory fir = FIR({
+            caseID: caseID,
+            officer: officer,
+            incident: incident,
+            complainant: complainant,
+            suspects: suspects,
+            witnesses: witnesses,
+            evidences: evidences,
+            status: Status.Registered
+        });
+
         allFIRs[caseID] = fir;
+        approvals[caseID][official] = true;
         return true;
     }
 
@@ -101,7 +103,7 @@ contract VigilanteCore {
 
     function getFIRData(
         uint256 caseID
-    ) external view OfficialOnly ViewerOnly(caseID) returns (FIR memory fir) {
+    ) external view ViewerOnly(caseID) returns (FIR memory fir) {
         require(allFIRs[caseID].caseID != 0, "Error: Case ID not registered");
         fir = allFIRs[caseID];
     }
@@ -120,21 +122,6 @@ contract VigilanteCore {
         return true;
     }
 
-    function unApproveView(
-        uint256 caseID,
-        address viewer
-    ) external OfficialOnly returns (bool) {
-        require(viewer != address(0), "Error: Address != 0x0");
-        require(allFIRs[caseID].caseID != 0, "Error: Case ID not registered");
-        require(
-            approvals[caseID][viewer],
-            "Error: Viewer is already not approved"
-        );
-
-        approvals[caseID][viewer] = false;
-        return true;
-    }
-
     // modifiers
     modifier OfficialOnly() {
         require(msg.sender == official, "Error: You are not the official");
@@ -145,6 +132,26 @@ contract VigilanteCore {
         require(
             approvals[caseID][msg.sender],
             "Error: Not approved to view FIR"
+        );
+        _;
+    }
+
+    modifier PreventDOS(
+        FIR_suspect calldata suspects,
+        FIR_witness calldata witnesses
+    ) {
+        require(
+            suspects.name.length <= 5,
+            "Note: You can add maximum 5 suspects. If more then add in description"
+        );
+        require(
+            witnesses.name.length <= 5,
+            "Note: You can add maximum 5 witnesses"
+        );
+        require(
+            witnesses.name.length == witnesses.contact.length &&
+                witnesses.name.length == witnesses.statement.length,
+            "Error: Witness name, contact and statements should be equal"
         );
         _;
     }
